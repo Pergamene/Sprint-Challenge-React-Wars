@@ -1,4 +1,7 @@
 import React from 'react';
+
+import Cards from './components/cardsContainer/Cards.jsx';
+
 import './App.css';
 
 const App = () => {
@@ -12,6 +15,7 @@ const App = () => {
   return (
     <div className="App">
       <h1 className="Header">React Wars</h1>
+      <Cards />
     </div>
   );
 }
