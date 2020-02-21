@@ -38,25 +38,22 @@ const Cards = () => {
     setPageNumber(pageNumber);
   }
 
-  return (
-    <Fragment>
-      <div className={classes.root}>
-        {apiData && <Card characterData={apiData[0]} />}
-        {apiData && apiData.length > 0 && <Card characterData={apiData[1]} />}
-        {apiData && apiData.length > 1 && <Card characterData={apiData[2]} />}
-        {apiData && apiData.length > 2 && <Card characterData={apiData[3]} />}
-        {apiData && apiData.length > 3 && <Card characterData={apiData[4]} />}
-        {apiData && apiData.length > 4 && <Card characterData={apiData[5]} />}
-        {apiData && apiData.length > 5 && <Card characterData={apiData[6]} />}
-        {apiData && apiData.length > 6 && <Card characterData={apiData[7]} />}
-        {apiData && apiData.length > 7 && <Card characterData={apiData[8]} />}
-        {apiData && apiData.length > 8 && <Card characterData={apiData[9]} />}
-      </div>
-      <div className={classes.footer}>
-        {apiData && <Pages changePage={changePage} />}
-      </div>
-    </Fragment>
-  );
+  if (apiData) {
+    return (
+      <Fragment>
+        <div className={classes.root}>
+          {apiData.map((characterData, index) => {
+            return <Card characterData={characterData} key={index} />
+          })}
+        </div>
+        <div className={classes.footer}>
+          {apiData && <Pages changePage={changePage} />}
+        </div>
+      </Fragment>
+    );
+  } else {
+    return <div></div>;
+  }
 };
 
 export default Cards;

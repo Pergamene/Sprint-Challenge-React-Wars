@@ -22,7 +22,7 @@ const Pages = props => {
       <span className={classes.pageNumber} onClick={() => changePage(6)}>6 </span>
       <span className={classes.pageNumber} onClick={() => changePage(7)}>7 </span>
       <span className={classes.pageNumber} onClick={() => changePage(8)}>8 </span>
-      {/* <span className={classes.pageNumber} onClick={() => changePage(9)}>9</span> */}
+      <span className={classes.pageNumber} onClick={() => changePage(9)}>9</span>
     </div>
   );
 };
