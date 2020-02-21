@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
 import Card from '../card/Card.jsx';
+import Pages from './Pages.jsx';
 import GetRequest from '../../services/GetRequest.js';
 
 const useStyles = makeStyles({
@@ -11,6 +12,11 @@ const useStyles = makeStyles({
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
+  },
+  footer: {
+    fontSize: '2em',
+    color: 'yellow',
+    marginBottom: '50px',
   },
 });
 
@@ -28,19 +34,28 @@ const Cards = () => {
     getData();
   }, [pageNumber]);
 
+  const changePage = pageNumber => {
+    setPageNumber(pageNumber);
+  }
+
   return (
-    <div className={classes.root}>
-      {apiData && <Card characterData={apiData[0]} />}
-      {apiData && <Card characterData={apiData[1]} />}
-      {apiData && <Card characterData={apiData[2]} />}
-      {apiData && <Card characterData={apiData[3]} />}
-      {apiData && <Card characterData={apiData[4]} />}
-      {apiData && <Card characterData={apiData[5]} />}
-      {apiData && <Card characterData={apiData[6]} />}
-      {apiData && <Card characterData={apiData[7]} />}
-      {apiData && <Card characterData={apiData[8]} />}
-      {apiData && <Card characterData={apiData[9]} />}
-    </div>
+    <Fragment>
+      <div className={classes.root}>
+        {apiData && <Card characterData={apiData[0]} />}
+        {apiData && apiData.length > 0 && <Card characterData={apiData[1]} />}
+        {apiData && apiData.length > 1 && <Card characterData={apiData[2]} />}
+        {apiData && apiData.length > 2 && <Card characterData={apiData[3]} />}
+        {apiData && apiData.length > 3 && <Card characterData={apiData[4]} />}
+        {apiData && apiData.length > 4 && <Card characterData={apiData[5]} />}
+        {apiData && apiData.length > 5 && <Card characterData={apiData[6]} />}
+        {apiData && apiData.length > 6 && <Card characterData={apiData[7]} />}
+        {apiData && apiData.length > 7 && <Card characterData={apiData[8]} />}
+        {apiData && apiData.length > 8 && <Card characterData={apiData[9]} />}
+      </div>
+      <div className={classes.footer}>
+        {apiData && <Pages changePage={changePage} />}
+      </div>
+    </Fragment>
   );
 };
 

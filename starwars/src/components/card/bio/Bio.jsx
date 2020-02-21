@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 
 const Bio = props => {
-  const { birth_year, homeworld } = props.characterData
+  const { birth_year } = props.characterData
 
   return (
     <Fragment>

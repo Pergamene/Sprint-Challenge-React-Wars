@@ -8,7 +8,7 @@ const useStyles = makeStyles({
   root: {
     width: '250px',
     border: '10px solid yellow',
-    borderRadius: '25px',
+    borderRadius: '50px',
     backgroundColor: 'black',
     color: 'yellow',
     textAlign: 'left',
@@ -17,6 +17,7 @@ const useStyles = makeStyles({
   },
   h2: {
     textAlign: 'center',
+    textDecoration: 'underline',
   },
 });
 
