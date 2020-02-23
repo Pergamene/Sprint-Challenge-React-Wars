@@ -8,21 +8,28 @@ const useStyles = makeStyles({
 });
 
 const Pages = props => {
-  const { changePage } = props;
+  const { changePage, numberOfChars } = props;
   const classes = useStyles();
+
+  const makePageNumberArray = () => {
+    const NUMBER_OF_CHARACTERS = numberOfChars;
+    const CHARACTERS_PER_PAGE = 10;
+    const pages = Math.ceil(NUMBER_OF_CHARACTERS / CHARACTERS_PER_PAGE);
+    const nums = [];
+    for (let i = 1; i <= pages; i++) {
+      nums.push(i);
+    }
+    return nums;
+  }
+
+  const pages = makePageNumberArray();
 
   return (
     <div>
       <span>Page: </span>
-      <span className={classes.pageNumber} onClick={() => changePage(1)}>1 </span>
-      <span className={classes.pageNumber} onClick={() => changePage(2)}>2 </span>
-      <span className={classes.pageNumber} onClick={() => changePage(3)}>3 </span>
-      <span className={classes.pageNumber} onClick={() => changePage(4)}>4 </span>
-      <span className={classes.pageNumber} onClick={() => changePage(5)}>5 </span>
-      <span className={classes.pageNumber} onClick={() => changePage(6)}>6 </span>
-      <span className={classes.pageNumber} onClick={() => changePage(7)}>7 </span>
-      <span className={classes.pageNumber} onClick={() => changePage(8)}>8 </span>
-      <span className={classes.pageNumber} onClick={() => changePage(9)}>9</span>
+      {pages.map(pageNumber => {
+        return <span className={classes.pageNumber} key={pageNumber} onClick={() => changePage(pageNumber)}>{pageNumber} </span>
+      })}
     </div>
   );
 };

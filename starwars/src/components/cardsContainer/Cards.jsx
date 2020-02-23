@@ -23,13 +23,15 @@ const useStyles = makeStyles({
 const Cards = () => {
   const [apiData, setData] = useState();
   const [pageNumber, setPageNumber] = useState('1');
+  const [numberOfChars, setNumberOfChars] = useState();
 
   const classes = useStyles();
 
   useEffect(() => {
     const getData = async () => {
       const result = await GetRequest.getRequst(pageNumber);
-      setData(result);
+      setData(result.results);
+      setNumberOfChars(result.count);
     }
     getData();
   }, [pageNumber]);
@@ -47,7 +49,7 @@ const Cards = () => {
           })}
         </div>
         <div className={classes.footer}>
-          {apiData && <Pages changePage={changePage} />}
+          {apiData && <Pages numberOfChars={numberOfChars} changePage={changePage} />}
         </div>
       </Fragment>
     );
