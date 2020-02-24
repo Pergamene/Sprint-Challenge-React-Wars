@@ -7,8 +7,17 @@ class GetRequest {
     url.searchParams.append('page', pageNumber);
     url.searchParams.append('format', 'json');
     const response = await axios.get(url);
-    // return response.data.results;
     return response.data;
+  }
+
+  static async getRequestHomeworld(url) {
+    const response = await axios.get(url);
+    return response.data.name;
+  }
+
+  static async getRequestSpecies(url) {
+    const response = await axios.get(url);
+    return response.data.name;
   }
 }
 
