@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import Card from '../card/Card.jsx';
 import Pages from './Pages.jsx';
+import Search from '../Search.jsx';
 import GetRequest from '../../services/GetRequest.js';
 
 const useStyles = makeStyles({
@@ -43,6 +44,7 @@ const Cards = () => {
   if (apiData) {
     return (
       <Fragment>
+        <Search setData={setData} setNumberOfChars={setNumberOfChars}/>
         <div className={classes.root}>
           {apiData.map((characterData, index) => {
             return <Card characterData={characterData} key={index} />
